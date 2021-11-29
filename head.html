@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width",initial-scale=1>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+           :root{
+    --header-height:3rem;
+    --nav-width:324px;
+    --font-medium:500;
+    --font-semi-bold:600;
+    --font-bold:700;
+   --first-color:#CC4B2C;
+   --first-color-dark:#662616;
+   --first-color-darken:#290F09;
+   --text-color:#54423D;
+   --first-color-light:#EAE7E6;
+   --first-color-lighten:#FFFAFA;
+--body-font:'Poppins',sans-serif;
+--h1-font-size:1.5rem;
+--h2-font-size:1.25rem;
+--h3-font-size:1rem;
+--normal-font-size:.938rem;
+--small-font-size:.813rem;
+--smaller-font-size:.75rem;
+--mb-1:.5rem;
+--mb-2:1rem;
+--mb-3:1.5rem;
+--mb-4:2rem;
+--mb-5:2.5rem;
+--z-fixed:100;
+}
+@media screen and(min-width:768px){
+    :root{
+        --h1-font-size:2.25rem;
+        --h2-font-size:1.5rem;
+        --h3-font-size:1.25rem;
+        --normal-font-size:1rem;
+        --small-font-size:.875rem;
+        --smaller-font-size:.813rem;  
+    }
+}
+*,::before,::after{
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    margin: var(--header-height)0 0 0;
+    font-family:var(--body-font);
+    font-size:var(--normal-font-size);
+    font-weight: var(--font-medium);
+    background-color: var(--first-color-lighten);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+h1,h2,h3,p{
+    margin:0;
+}
+h3{
+    font-weight:var(--font-semi-bold);
+}
+ul{
+    margin:0;
+    padding: 0;
+    list-style: none;
+}
+a{
+  text-decoration: none;
+  color:var(--text-color);  
+}
+img{
+    max-width:100% ;
+    height: auto;
+    display:block ;
+}
+.section{
+    padding: 4rem 0 2rem;
+}
+.section-title{
+    font-size:var(--h1-font-size);
+    color:var(--first-color);
+    margin-bottom: var(--mb-3);
+    text-align: center;
+}
+.section-subtitle{
+    display: block;
+    font-size: var(--small-font-size);
+    color: var(--first-color-darken);
+    text-align: center;
+    font-weight: var(--font-bold);
+    margin-bottom: .25rem;
+}
+.bd-grid{
+    max-width:1024px;
+    display:grid;
+    grid-template-columns: 100%;
+    column-gap: 2rem;
+    width: calc(100%-2rem);
+    margin-left: var(--mb-2);
+    margin-right: var(--mb-2);
+}
+.l-header{
+  width: 100%;
+  position:fixed;
+top: 0;
+left: 0;
+z-index: var(--z-fixed);
+background-color: var(--first-color-lighten);
+box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+.nav{
+    height:var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav_menu{
+    position: fixed;
+    top: 0;
+    left: -90%;
+    width: 90%;
+    height: 100vh;
+    padding: 3rem;
+    align-items: center;
+    background-color: var(--first-color);
+    transition: .5s;
+} 
+.nav_close{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: var(--first-color-dark);
+    cursor:pointer;
+}
+.nav_item{
+    margin-bottom: var(--mb-4);
+}
+.nav_link{
+    font-size:1rem;
+    text-transform:uppercase;
+    color:var(--first-color-lighten);
+    font-weight: var(--font-bold);
+    transition: .3;
+}
+.nav_link::hover{
+    color: var(--text-color);
+}
+.nav_toggle{
+    color: var(--first-color-dark);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.show{
+    left:0;
+}
+.active{
+    color: var(--text-color);
+}
+.home_container{
+  height:calc(100vh - var(--header-height));
+  align-items: center;  
+}
+.home_data{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    height:fit-content;
+    text-align:left;
+}
+.home_img{
+    padding-top:0 ;
+    padding-left:0;
+    width: 160px;
+    height: 160px;
+    background-color: var(--first-color);
+    border-radius: 60%;
+    overflow:hidden;
+    margin-bottom: var(--mb-2);
+}
+.home_img img{
+    width: 165px;
+}
+.home_title{
+    font-size: var(--h1-font-size);
+    color:var(--first-color);
+    font-weight: var(--font-semi-bold);
+}
+.home_profession{
+  font-size: var(--small-font-size);
+  color: var(--first-color-dark);
+  margin-bottom: var(--mb-5);  
+}
+.home_social{
+  margin-bottom: 5rem;  
+}
+.home_social-link{
+    display: inline-flex;
+    background-color: var(--first-color);
+    color:var(--first-color-lighten);
+    font-size: 1.1rem;
+    border-radius: 50%;
+    padding:.40rem;
+    margin: 0 var(--mb-1);
+    transition: .3s;
+}
+.home_social-link:hover{
+    background-color: var(--first-color-dark);
+}
+.home_button{
+    width: 50%;
+}
+.button{
+    display: inline-block;
+    background-color: var(--first-color);
+    color: var(--first-color-lighten);
+    padding: 1rem 2rem;
+    font-weight: var(--font-semi-bold);
+    border-radius: -5rem;
+    transition: .3s;
+}
+.button:hover{
+    background-color: var(--first-color-dark);
+}
+.button_light{
+    background-color: var(--first-color-lighten);
+    color: var(--first-color);
+}
+.button_light:hover{
+    color: var(--first-color-lighten);
+}
+.about_container{
+    row-gap:2rem;
+}
+.about_data{
+    text-align: center;
+}
+.about_description{
+    margin-bottom: var(--mb-4);
+}
+.about_img{
+    width: 210px;
+    border-radius: .5rem;
+    margin: 0 auto;
+}
+.about_information{
+    margin-bottom: var(--mb-4);
+}
+.about_information-title{
+   font-size: var(--h3-font-size);
+   color: var(--first-color-dark);
+   margin-bottom: var(--mb-2); 
+}
+.about_information-data{
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    margin-bottom: var(--mb-3);
+}
+.about_information-subtitle{
+    display: block;
+    font-weight: var(--font-semi-bold);
+}
+.about_information-subtitle-small{
+    font-size:var(--small-font-size) ;
+}
+.skills-container{
+row-gap: 2rem;
+}
+.skills-subtitle{
+    font-size: var(--h3-font-size);
+    color: var(--first-color-dark);
+    margin-bottom: var(--mb-2);
+}
+.skills_data{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 var(--mb-2);
+    margin-bottom: var(--mb-4);
+}
+.skills_bar{
+    position: absolute;
+    bottom: .05rem;
+    height: .25rem;
+    background-color: var(--first-color);
+}
+.skills_html{
+    width: 80%;
+}
+.skills_javascript{
+    width: 70%;
+}
+.skills_python{
+    width: 80%;
+}
+.skills_c{
+    width: 50%;
+}
+.skills_java{
+    width: 70%;
+}
+.education-container{
+row-gap:2rem
+}
+.education_content{
+    padding: 1.5rem .5rem;
+    border: 2px solid var(--first-color);
+    border-radius: .5rem;
+    text-align: center;
+}
+.education_content,.education_year,.education_specialist,.education_race,.education_marks{
+    transition:.5s;
+}
+.education_content:hover{
+    background-color: var(--first-color);
+}
+.works-container{
+    justify-items:center;
+row-gap: 2rem;
+}
+.works_img{
+    position: relative;
+    overflow: hidden;
+    border-radius: .5rem;
+}
+.works_data{
+    position: absolute;
+    bottom: -100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(204,75,44,.7);
+    border-radius: .5rem;
+    transition:.3s ;
+}
+.works_link{
+    display: inline-flex;
+    font-size:1.5rem;
+    background-color: var(--first-color-lighten);
+    color: var(--first-color);
+    padding: .25rem;
+    border-radius: .25rem;
+    margin-bottom: var(--mb-2);
+}
+.works_title{
+    font-size: var(--h3-font-size);
+    color: var(--first-color-lighten);
+}
+.works_img:hover .works_data{
+    bottom: 0;
+}
+.contact_container{
+    row-gap:3rem;
+}
+.contact_input{
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    background-color: var(--first-color-light);
+    font-size: var(--normal-font-size);
+    margin-bottom: var(--mb-2);
+    border-radius: .5rem;
+}
+.contact::placeholder{
+    color: var(--first-color-dark);
+    font-family: var(--body-font);
+    font-weight: var(--font-medium);
+}
+.contact_button{
+    outline: none;
+    border: none;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    cursor: pointer;
+}
+.contact_info{
+    margin-bottom: var(--mb-3);
+}
+.contact_subtitle{
+    font-size: var(--h3-font-size);
+    color: var(--first-color-dark);
+    margin-bottom: var(--mb-1);
+}
+.contact_text{
+    display: block;
+    padding-left: 0.5rem;
+}
+.footer{
+    background-color: var(--first-color-darken);
+    color: var(--first-color-lighten);
+    text-align: center;
+}
+.footer_title{
+    font-size: var(--h1-font-size);
+    margin-bottom: var(--mb-2);
+}
+.footer_description{
+    margin-bottom: var(--mb-2);
+}
+.footer_social{
+    margin-bottom: 3rem;
+}
+.footer_link{
+  display: inline-flex;
+  background-color: var(--first-color);
+  color: var(--first-color-lighten);
+  font-size: 1.1rem;
+  border-radius: 50%;  
+  padding: .40rem;
+  margin:0 var(--mb-1);
+  transition: .3s;
+}
+.footer_link:hover{
+    background-color: var(--first-color-lighten);
+    color: var(--first-color);
+}
+@media screen and (min-width:768px){
+    .home_button{
+        width:initial;
+    }
+    .nav_menu{
+       width: var(--nav-width); 
+    }
+    .about-container,.skills-container,.works-container,.contact_container,.contact_input,.education_container{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .about_data{
+        text-align: initial;
+    }
+    .about_description{
+        margin-bottom: var(--mb-5);
+    }
+    .about_img{
+        width: 300px;
+    }
+    .about_information{
+        padding-left:0.1rem ;
+    }
+    .contact_inputs{
+       display: grid;
+       column-gap: 1.5rem; 
+    }
+    .contact_info{
+        padding-left: 3rem;
+    }
+    .footer{
+        background: none;
+    }
+    .footer_container{
+        background-color: var(--first-color-darken);
+        padding: 3rem 0;
+        border-radius: 5rem;
+    }
+}
+@media screen and (min-width:1024px){
+   body{
+       margin: 0;
+       padding-left: var(--nav-width);
+   } 
+   .l-header{
+       width: 0;
+   }
+   .nav_toggle,.nav_logo,.nav_close{
+       display: none;
+   }
+   .nav_menu{
+       left: 0;
+   }
+   .home_container{
+       height: 100vh;
+   }
+   .section{
+       padding: 3rem 0 2rem;
+   }
+   .bd-grid{
+       margin-left: auto;
+       margin-right: auto;
+   }
+
+.works-container,.education-container,.skills-container{
+    grid-template-columns: repeat(3,1fr);
+}
+.footer{
+    background: none;
+}
+.footer_container{
+        background-color: var(--first-color-darken);
+        padding: 3rem 0;
+        border-radius: 5rem;
+    }
+    }
+        </style>
+        <link rel="stylesheet" href="./css/style.css/">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+        <header class="l-header">
+          <nav class="nav bd-grid">
+              <div class="nav_toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+              </div>
+              <div>
+                  <a href="#home" class="nav_logo">Mrinalini</a>
+              </div>
+              <div class="nav_menu" id="nav-menu">
+                  <div class="nav_close" id="nav-close">
+                    <i class='bx bx-x'></i>
+                  </div>
+                  <ul class="nav_list">
+                      <li class="nav_item"><a href="#home" class="nav_link active">Home</a></li>
+                      <li class="nav_item"><a href="#about" class="nav_link">About</a></li>
+                      <li class="nav_item"><a href="#skills" class="nav_link">Skills</a></li>
+                      <li class="nav_item"><a href="#education" class="nav_link">Education</a></li>
+                      <li class="nav_item"><a href="#works" class="nav_link">Works</a></li>
+                      <li class="nav_item"><a href="#contact" class="nav_link">Contact Me</a></li>
+                  </ul>
+              </div>
+          </nav>  
+        </header>
+        <main class="l-main">
+         <section class="home" id="home">
+            <div class="home_container bd-grid">
+                <div class="home_data">
+                    <div class="home_img">
+                        <img src="images/20210211_131542.jpg" alt="">
+                    </div>
+                    <h1 class="home_title">Mrinalini Kalundia</h1>
+                    <span class="home_profession">Data Analyst</span>
+                    <div class="home_social">
+                        <a href="https://www.linkedin.com/in/mrinalini-kalundia-39b34918a/" class="home_social-link"><i class='bx bxl-linkedin'></i></a>
+                        <a href="https://github.com/mrinalinikalundia" class="home_social-link"><i class='bx bxl-github'></i></a>
+                    </div>
+                    <a downloads="" href="#" class="button home_button">Download Resume</a>
+                </div>
+            </div> 
+         </section>  
+         <section class="about section" id="about">
+             <span class="section-subtitle">My Intro</span>
+             <h2 class="section-title">About Me</h2>
+             <div class="about-container bd-grid">
+                 <div class="about_data">
+                 <p class="about_description">I am a highly motivated and hardworking student, and always keen to learn new things. I have demonstrated a high level of motivation, work ethics and teamwork during my education.I have made few projects in Web Development,Python,NLP and Digital Marketing. Currently, I am a final year student of Integrated MSc Mathematics and Computing from BIT Mesra.</p>
+                 <img src="images/IMG_20200811_103648 (2).jpg" alt="" class="about_img">
+             </div>
+             <div class="about_information">
+                 <h3 class="about_information-title">Information</h3>
+                <div class="about_information-data">
+                    <i class='bx bx-user'></i>  
+                    <span>Mrinalini Kalundia</span>
+                </div>
+                <div class="about_information-data">
+                    <i class='bx bx-phone'></i>  
+                    <span>7485802897</span>
+                </div>
+                <div class="about_information-data">
+                    <i class='bx bx-enevelope'></i>  
+                    <span>mrinalinikalundia@gmail.com</span>
+                </div>
+                    <h3 class="about_information-title">Work Experience</h3>
+                    <div class="about_information-data">
+                        <i class='bx bx-briefcase-alt-2'></i>
+                        <span class="about_information-subtitle">Sales And Marketing Intern<br>Coffee'n'Thoughts<br>12/05/2021-12/06/2021</span>
+                        <span class="experience-description">During the internship, I learn, work as a team and contribute diligently to the growth of the company. <br>The tasks involved in the internship included-
+<br>1)Creation of social media posts, promotional emails, and other marketing collateral.
+<br>2)Support marketing campaign planning and execution.
+<br>3)Assist in the creation of written, video, and image content for marketing channels. 
+<br>4)Participate in marketing brainstorming sessions.</span>
+                    </div>
+                    <div class="about_information-data">
+                        <i class='bx bx-briefcase-alt-2'></i>
+                        <span class="about_information-subtitle">Social Media Intern,Wepreneurs<br>20/05/2020-20/06/2020</span>
+                        <p class="experience-description">During the internship, I learn, work as team and contribute diligently to the growth of the company.<br> The tasks involved in the internship included-
+<br>1)Social Media Broadcasting
+<br>2)Digital Marketing Strategy Analysis
+<br>3)Content Curation
+<br>4)Creation of Digital Marketing Collateral</p>
+                    </div>
+                    </div>
+             </div>
+         </section> 
+         <section class="skills section" id="skills">
+            <span class="section-subtitle">Why Choose Me</span>
+            <h2 class="section-title">My expertise Area</h2>
+            <div class="skills-container bd-grid">
+            <div class="skills_content">
+                <h3 class="skills_subtitle">Web Development</h3>
+                <div class="skills_data">
+                    <span class="skills_name">HTML/CSS</span>
+                    <span class="skills_number">80%</span>
+                    <span class="skills_bar skills_html"></span>
+                </div>
+                <div class="skills_data">
+                    <span class="skills_name">Javascript</span>
+                    <span class="skills_number">70%</span>
+                    <span class="skills_bar skills_javascript"></span>
+                </div>
+                </div>
+                <div class="skills_content">
+                <h3 class="skills_subtitle">Machine Learning</h3>
+                <div class="skills_data">
+                    <span class="skills_name">Python</span>
+                    <span class="skills_number">80%</span>
+                    <span class="skills_bar skills_python"></span>
+                </div>
+                <div class="skills_data">
+                    <span class="skills_name">NLP</span>
+                    <span class="skills_number">70%</span>
+                    <span class="skills_bar skills_java"></span>
+                </div>
+                <div class="skills_data">
+                    <span class="skills_name">SQL</span>
+                    <span class="skills_number">70%</span>
+                    <span class="skills_bar skills_java"></span>
+                </div>
+                <div class="skills_data">
+                    <span class="skills_name">Data Modelling and Evaluation</span>
+                    <span class="skills_number">70%</span>
+                    <span class="skills_bar skills_java"></span>
+                </div>
+                </div>
+                <div class="skills_content">
+                <h3 class="skills_subtitle">Digital Marketing</h3>
+                <div class="skills_data">
+                    <span class="skills_name">Content Writing</span>
+                    <span class="skills_number">80%</span>
+                    <span class="skills_bar skills_c"></span>
+                </div>
+                <div class="skills_data">
+                    <span class="skills_name">SEO</span>
+                    <span class="skills_number">60%</span>
+                    <span class="skills_bar skills_java"></span>
+                </div>
+                <div class="skills_data">
+                    <span class="skills_name">Social Media Marketing</span>
+                    <span class="skills_number">70%</span>
+                    <span class="skills_bar skills_java"></span>
+                </div>
+                <div class="skills_data">
+                    <span class="skills_name">Google Ads</span>
+                    <span class="skills_number">70%</span>
+                    <span class="skills_bar skills_java"></span>
+                </div>
+            </div>
+            </div>
+            </section>
+            <section class="education section" id="education">
+                <span class="section-subtitle">Qualification</span>
+                <h2 class="section-title">My Education</h2>
+                <div class="education-container bd-grid">
+                <div class="education_content">
+                        <h3 class="education_year">2015</h3>
+                        <span class="education_university">Dhanbad Public School</span>
+                 <h3 class="education_race">10th CBSE</h3>
+                 <span class="education_speciality">General</span>
+                 <h4 class="education_marks">CGPA:8.6</h4>
+                </div>
+                  <div class="education_content">
+                        <h3 class="education_year">2017</h3>
+                        <span class="education_university">Mother Khazani Convent School</span>
+                 <h3 class="education_race">12th CBSE</h3>
+                 <span class="education_speciality">PCM</span>
+                 <h4 class="education_marks">Percentage:60.2%</h4>
+                </div>
+                  <div class="education_content">
+                        <h3 class="education_year">2017-2022</h3>
+                        <span class="education_university">Birla Institute of Technology,Mesra</span>
+                 <h3 class="education_race">Post Graduation</h3>
+                 <span class="education_speciality">Integrated MSc Mathematics and Computing</span>
+                 <h4 class="education_marks">CGPA:6.62</h4>
+                  </div>
+                </div>
+                </div>
+                </div>
+                </section>
+                <section class="project section" id="works">
+                    <span class="section-subtitle">Work</span>
+                    <h2 class="section-title">My Projects</h2>
+                    <div class="works-container bd-grid">
+                        <div class="works_img">
+                            <img src="images/Capture.PNG" alt="">
+                            <div class="works_data">
+                                <a href="https://drive.google.com/file/d/1cnooWnTn9AGgYMxbsfuVJ2O2w_tau536/view?usp=sharing" class="works_link"><i class='bx bx-link-alt'></i></a>
+                                <span class="works_title">A BRIDGE BETWEEN COLOR, MOOD AND FESTIVAL<br> A Thesis in Creative Arts</span>
+                            </div>
+                            </div>
+                            <div class="works_img">
+                                <img src="images/Capture1.PNG" alt="">
+                                <div class="works_data">
+                                    <a href="#" class="works_link"><i class='bx bx-link-alt'></i></a>
+                                    <span class="works_title">Web Development</span>
+                                </div>
+                            </div>
+                                <div class="works_img">
+                                    <img src="images/sphx_glr_plot_iris_dtc_0021.png" alt="">
+                                    <div class="works_data">
+                                        <a href="https://github.com/mrinalinikalundia/titanic" class="works_link"><i class='bx bx-link-alt'></i></a>
+                                        <span class="works_title">Prediction of Survival from Titanic Dataset using Decision Tree</span>
+                                    </div>
+                        </div>
+                        <div class="works_img">
+                            <img src="images/k-means.png" alt="">
+                            <div class="works_data">
+                                <a href="https://github.com/mrinalinikalundia/Movies-Database/tree/main/OTT%20platform" class="works_link"><i class='bx bx-link-alt'></i></a>
+                                <span class="works_title">Movies Recommendation by Genres using K-Means Clustering</span>
+                            </div>
+                            </div>
+                            <div class="works_img">
+                                <img src="images/real_politic (1) copy.png" alt="">
+                                <div class="works_data">
+                                    <a href="https://github.com/mrinalinikalundia/Fake-news" class="works_link"><i class='bx bx-link-alt'></i></a>
+                                    <span class="works_title">Detect Fake News using NLP</span>
+                                </div>
+                                </div>
+                        </div>
+                        </section>
+                        <section class="contact section" id="contact">
+                            <span class="section-subtitle">Contact Me</span>
+                            <h2 class="section-title">Get In Touch</h2>
+                            <div class="contact-container bd-grid">
+                                <form action="" class="contact_form">
+                                    <div class="contact_inputs">
+                                        <input type="text" placeholder="Name" class="contact_input">
+                                        <input type="mail" placeholder="Email" class="contact_input">
+                                    </div>
+                                    <input type="text" placeholder="Project" class="contact_input">
+                                    <textarea name="" id="" cols="0" rows="10" placeholder="Message" class="contact_input"></textarea>
+                                    <input type="submit" value="Send Message" class="button contact_button">
+                                </form>
+                                <div>
+                                    <div class="contact_info">
+                                        <h3 class="contact_subtitle">Call Me</h3>
+                                        <span class="contact_text">7485802897</span>
+                                    </div>
+                                    <div class="contact_info">
+                                        <h3 class="contact_subtitle">Email</h3>
+                                        <span class="contact_text">mrinalinikalundia@gmail.com</span>
+                                    </div>
+                                </div>
+                                </div>
+                        </section>       
+                </main>
+                <footer class="footer section">
+                    <div class="footer_container bd-grid">
+                        <h1 class="footer_title">Mrinalini</h1>
+                        <p class="footer_description">I am Mrinalini and this is my personal website</p>
+                    </div>
+                    <div class="footer_social">
+                        <a href="#" class="footer_link"><i class='bx bxl-facebook'></i></a>
+                    </div>
+                </footer>
+        <script src="./javascript/main.js">
+        </script>
+    </body>
+</html>
